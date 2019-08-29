@@ -27,27 +27,29 @@ describe('First Api Tests', () => {
 
 
       it('Consume PATCH Service', async () => {
-        const requesBody = {
+        const requestBody = {
           name: 'John',
           age: '31',
           city: 'New York'
         };
     
-        const response = await agent.patch('https://httpbin.org/patch').send(requesBody);
+        const response = await agent.patch('https://httpbin.org/patch').send(requestBody);
     
         expect(response.status).to.equal(statusCode.OK);
+        expect(response.body.json.name).to.equal(requestBody.name);
       });
     
       it('Consume PUT Service', async () => {
-        const requesBody = {
+        const requestBody = {
           name: 'John',
           age: '31',
           city: 'New York'
         };
     
-        const response = await agent.put('https://httpbin.org/put').send(requesBody);
+        const response = await agent.put('https://httpbin.org/put').send(requestBody);
     
         expect(response.status).to.equal(statusCode.OK);
+        expect(response.body.json.name).to.equal(requestBody.name);
       });
     
       it('Consume DELETE Service', async () => {
